@@ -1,0 +1,13 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+#formularioImagen {
+    width: 400px;
+}
+
+.formInput {
+    display: flex;
+    flex-direction: column;
+}
