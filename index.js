@@ -15,7 +15,7 @@ app.listen(PORT, () => {
 });
 
 app.use(express.static("public"));
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded());
 
 app.post("/imagen-cargada", async (req, res) => {
     res.setHeader('Content-Type', 'image/jpg');
@@ -27,7 +27,7 @@ app.post("/imagen-cargada", async (req, res) => {
 
         let nombreImagen = uuidv4().slice(0, 6);
 
-        await imagen.resize(250, jimp.AUTO).grayscale().quality(100).writeAsync(path.join(__dirname, `/public/content/${nombreImagen}.jpg`));
+        await imagen.resize(350, jimp.AUTO).grayscale().quality(100).writeAsync(path.join(__dirname, `/public/content/${nombreImagen}.jpg`));
         const imagenData = fs.readFileSync(path.join(__dirname, `/public/content/${nombreImagen}.jpg`));
         res.send(imagenData);
 
